@@ -49,13 +49,15 @@
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:launchMode="singleTop"
             android:process=":crash"
-            android:screenOrientation="portrait" /> <!-- 引导界面 -->
+            android:screenOrientation="portrait" />
+        <!-- 引导界面 -->
         <activity
             android:name=".ui.activity.GuideActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
-            /> <!-- 闪屏界面 -->
+            />
+        <!-- 闪屏界面 -->
         <activity
             android:name=".ui.activity.SplashActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
