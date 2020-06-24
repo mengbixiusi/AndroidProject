@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.hjq.base.BaseAdapter;
 import com.hjq.demo.R;
 import com.hjq.demo.action.StatusAction;
+import com.hjq.demo.aop.SingleClick;
 import com.hjq.demo.common.MyActivity;
 import com.hjq.demo.ui.adapter.StatusAdapter;
 import com.hjq.demo.ui.dialog.MenuDialog;
@@ -121,6 +122,7 @@ public final class StatusActivity extends MyActivity
      * @param itemView          被点击的条目对象
      * @param position          被点击的条目位置
      */
+    @SingleClick
     @Override
     public void onItemClick(RecyclerView recyclerView, View itemView, int position) {
         toast(mAdapter.getItem(position));

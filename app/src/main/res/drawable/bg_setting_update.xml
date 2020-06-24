@@ -6,6 +6,6 @@
     <solid android:color="#f85e5e" />
 
     <!-- 圆角半径 -->
-    <corners android:radius="@dimen/circle_size" />
+    <corners android:radius="@dimen/qb_px_699" />
 
 </shape>

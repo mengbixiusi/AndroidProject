@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.hjq.base.BaseDialog;
 import com.hjq.demo.R;

@@ -1,6 +1,7 @@
 package com.hjq.demo.common;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
 
@@ -15,6 +16,7 @@ import com.hjq.demo.R;
 import com.hjq.demo.action.SwipeAction;
 import com.hjq.demo.action.TitleBarAction;
 import com.hjq.demo.action.ToastAction;
+import com.hjq.demo.helper.LoginOutBroadcastReceiver;
 import com.hjq.demo.http.model.HttpData;
 import com.hjq.demo.ui.dialog.WaitDialog;
 import com.hjq.http.EasyHttp;
@@ -44,6 +46,8 @@ public abstract class MyActivity extends BaseActivity
     /** 对话框数量 */
     private int mDialogTotal;
 
+    protected LoginOutBroadcastReceiver locallReceiver;
+
     /**
      * 当前加载对话框是否在显示中
      */
@@ -55,28 +59,41 @@ public abstract class MyActivity extends BaseActivity
      * 显示加载对话框
      */
     public void showDialog() {
-        if (mDialog == null) {
-            mDialog = new WaitDialog.Builder(this)
-                    .setCancelable(false)
-                    .create();
-        }
-        if (!mDialog.isShowing()) {
-            mDialog.show();
-        }
+
         mDialogTotal++;
+        postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (mDialog == null) {
+                    mDialog = new WaitDialog.Builder(MyActivity.this)
+                            .setCancelable(false)
+                            .create();
+                }
+                if (!mDialog.isShowing()) {
+                    mDialog.show();
+                }
+            }
+        },300);
+
+
     }
 
     /**
      * 隐藏加载对话框
      */
     public void hideDialog() {
-        if (mDialogTotal == 1) {
-            if (mDialog != null && mDialog.isShowing()) {
-                mDialog.dismiss();
-            }
-        }
+//        if (mDialogTotal == 1) {
+//            if (mDialog != null && mDialog.isShowing()) {
+//                mDialog.dismiss();
+//            }
+//        }
+
         if (mDialogTotal > 0) {
             mDialogTotal--;
+        }
+
+        if (mDialogTotal == 0 && mDialog != null && mDialog.isShowing()) {
+            mDialog.dismiss();
         }
     }
 
@@ -177,11 +194,19 @@ public abstract class MyActivity extends BaseActivity
     protected void onResume() {
         super.onResume();
         UmengClient.onResume(this);
+
+        // 注册广播接收器
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction("com.gesoft.admin.loginout");
+        locallReceiver = new LoginOutBroadcastReceiver();
+        registerReceiver(locallReceiver, intentFilter);
     }
 
     @Override
     protected void onPause() {
         UmengClient.onPause(this);
+        // 取消注册广播接收器
+        unregisterReceiver(locallReceiver);
         super.onPause();
     }
 

@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     app:cardBackgroundColor="@color/white"
-    app:cardCornerRadius="@dimen/dialog_ui_round_size"
+    app:cardCornerRadius="@dimen/qb_px_15"
     app:cardElevation="0px"
     tools:context=".ui.dialog.UIDialog">
 

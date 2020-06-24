@@ -42,7 +42,7 @@ public final class UmengClient {
             // 豆瓣RENREN平台目前只能在服务器端配置
             //PlatformConfig.setYixin("yxc0614e80c9304c11b0391514d09f13bf");
             //PlatformConfig.setTwitter("3aIN7fuF685MuZ7jtXkQxalyi", "MK6FEYG63eWcpDFgRYw4w9puJhzDl0tyuqWjZ3M7XJuuG7mMbO");
-            //PlatformConfig.setAlipay("2015111700822536");
+            PlatformConfig.setAlipay("2015111700822536");
             //PlatformConfig.setLaiwang("laiwangd497e70d4", "d497e70d4c3e4efeab1381476bac4c5e");
             //PlatformConfig.setPinterest("1439206");
             //PlatformConfig.setKakao("e4f60e065048eb031e235c806b31c70f");

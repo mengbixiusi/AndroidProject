@@ -30,26 +30,39 @@ import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 import com.tencent.bugly.crashreport.CrashReport;
 
 import cat.ereza.customactivityoncrash.config.CaocConfig;
+import leavesc.hello.dokv.DoKV;
+import leavesc.hello.dokv_imp.MMKVDoKVHolder;
 import okhttp3.OkHttpClient;
 
 /**
- *    author : Android 轮子哥
- *    github : https://github.com/getActivity/AndroidProject
- *    time   : 2018/10/18
- *    desc   : 项目中的 Application 基类
+ * author : Android 轮子哥
+ * github : https://github.com/getActivity/AndroidProject
+ * time   : 2018/10/18
+ * desc   : 项目中的 Application 基类
  */
 public final class MyApplication extends Application {
+
+    public static Context mContext;
 
     @Override
     public void onCreate() {
         super.onCreate();
+        mContext = this;
         initSDK(this);
+    }
+
+    public static Context getMContext() {
+        return mContext;
     }
 
     /**
      * 初始化一些第三方框架
      */
     public static void initSDK(Application application) {
+
+        //数据储存
+        DoKV.init(new MMKVDoKVHolder(application));
+
         // 友盟统计、登录、分享 SDK
         UmengClient.init(application);
 

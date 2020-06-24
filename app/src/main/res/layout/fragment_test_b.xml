@@ -29,7 +29,7 @@
                 android:orientation="horizontal"
                 android:padding="20dp">
 
-                <androidx.appcompat.widget.AppCompatImageView
+                <com.github.chrisbanes.photoview.PhotoView
                     android:id="@+id/iv_test_circle"
                     android:layout_width="90dp"
                     android:layout_height="90dp"
@@ -43,11 +43,20 @@
                     app:cardCornerRadius="10dp"
                     app:cardElevation="0px">
 
-                    <androidx.appcompat.widget.AppCompatImageView
+                    <Button
+                        android:text="我是button"
+                        style="@style/RectButtonStyle"
                         android:layout_width="90dp"
                         android:layout_height="90dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/bg_launcher" />
+                        >
+
+<!--                        <androidx.appcompat.widget.AppCompatImageView-->
+<!--                            android:layout_width="90dp"-->
+<!--                            android:layout_height="90dp"-->
+<!--                            android:scaleType="centerCrop"-->
+<!--                            android:src="@drawable/bg_launcher" />-->
+                    </Button>
+
                 </androidx.cardview.widget.CardView>
 
                 <com.hjq.widget.view.ScaleImageView

@@ -6,6 +6,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.hjq.demo.R;
+import com.hjq.demo.aop.CheckLogin;
 import com.hjq.demo.aop.SingleClick;
 import com.hjq.demo.common.MyFragment;
 import com.hjq.demo.http.glide.GlideApp;
@@ -57,6 +58,7 @@ public final class TestFragmentC extends MyFragment<HomeActivity> {
     }
 
     @SingleClick
+//    @CheckLogin
     @Override
     public void onClick(View v) {
         switch (v.getId()) {

@@ -3,11 +3,13 @@ package com.hjq.demo.ui.fragment;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.github.chrisbanes.photoview.PhotoView;
 import com.hjq.demo.R;
 import com.hjq.demo.aop.SingleClick;
 import com.hjq.demo.common.MyFragment;
 import com.hjq.demo.http.glide.GlideApp;
 import com.hjq.demo.ui.activity.HomeActivity;
+import com.hjq.demo.ui.activity.TestActivity;
 import com.hjq.widget.view.CountdownView;
 import com.hjq.widget.view.SwitchButton;
 
@@ -23,7 +25,7 @@ public final class TestFragmentB extends MyFragment<HomeActivity>
         implements SwitchButton.OnCheckedChangeListener {
 
     @BindView(R.id.iv_test_circle)
-    ImageView mCircleView;
+    PhotoView mCircleView;
 
     @BindView(R.id.sb_test_switch)
     SwitchButton mSwitchButton;
@@ -48,10 +50,12 @@ public final class TestFragmentB extends MyFragment<HomeActivity>
 
     @Override
     protected void initData() {
-        GlideApp.with(this)
-                .load(R.drawable.bg_launcher)
-                .circleCrop()
-                .into(mCircleView);
+//        GlideApp.with(this)
+//                .load(R.drawable.bg_launcher)
+//                .circleCrop()
+//                .into(mCircleView);
+
+        mCircleView.setImageResource(R.drawable.bg_launcher);
     }
 
     @SingleClick
@@ -60,6 +64,8 @@ public final class TestFragmentB extends MyFragment<HomeActivity>
         if (v.getId() == R.id.cv_test_countdown) {
             toast(R.string.common_code_send_hint);
             mCountdownView.start();
+
+            startActivity(TestActivity.class);
         }
     }
 
